@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block body_content %}
+
+    <div class="container-fluid">
+        <div class="card base_card mt-5">
+                <div class="card_heading">
+                    <h2>Add Group and Permissions</h2>
+                </div>
+                <div class="form">
+
+                    <form method="post" action="{% url 'add_group' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="g_number">Add Group Number</label>
+                            <input type="text" id="g_number" name="g_number" class="form-control" placeholder="Enter Group Number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="g_name">Add Group Name</label>
+                            <input type="text" id="g_name" name="g_name" class="form-control" placeholder="Enter Group Name">
+                        </div>
+                        
+                        <div class="form-group">
+                            
+                            <label for="g_permission">Add Group Permissions</label>
+                            <select class="form-control" id="g_permission" name="g_permission" multiple style="height:200px;">
+                                {% for permission in permissions %}
+                                <option value="{{permission.id}}">{{permission.name}}</option>
+                                {% endfor %}
+                            </select>
+                           
+                            
+                            
+                        </div>
+
+                     
+
+                        <div class="common-btn">
+                            <input type="submit" class="btn btn-primary" value="Submit"/>
+                        </div>
+
+                    </form>
+
+                </div>
+              
+        </div>
+    <div>
+            
+
+{% endblock body_content %}
